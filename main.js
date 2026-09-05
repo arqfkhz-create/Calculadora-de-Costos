@@ -1,8 +1,9 @@
 class Ingrediente {
-    constructor(nombre, costoPorKilo, cantidadReceta){
+    constructor(nombre, costoPorKilo, cantidadReceta, porcionesReceta){
         this.nombre = nombre;
         this.costoPorKilo = costoPorKilo;
         this.cantidadReceta = cantidadReceta;
+        this.porcionesReceta = porcionesReceta;
     }
 
     calcularCosto(){
@@ -18,6 +19,7 @@ const listaIngredientes = []; //creamos array donde guardar los ingredientes
 const form = document.getElementById("formIngrediente"); 
 const cuerpoTabla = document.getElementById("cuerpoTabla");
 const totalPlato = document.getElementById("totalPlato");
+const porcionesInput = document.getElementById("porcionesReceta");
 
 
 // evento que se genera cuando usuario incluye un ingrediente
@@ -29,13 +31,15 @@ form.addEventListener ("submit", function (evento) {
     const costoPorKilo = parseFloat(document.getElementById("costoPorKilo").value);
     const cantidadReceta = parseFloat(document.getElementById("cantidadReceta").value);
 
-    const nuevoIngrediente = new Ingrediente (nombre, costoPorKilo, cantidadReceta);
+    const nuevoIngrediente = new Ingrediente (nombre, costoPorKilo, cantidadReceta,);
     listaIngredientes.push(nuevoIngrediente); //sumamos ingredientes al array
 
     form.reset();
     renderizarTabla();
 
 });
+
+porcionesInput.addEventListener("input", renderizarTabla);
 
 function renderizarTabla () {
     cuerpoTabla.innerHTML = ""; //borramos contenido de la tabla para no repetir ingredientes
@@ -60,8 +64,13 @@ function renderizarTabla () {
         index++;
     }
 
-    totalPlato.textContent = `Total: $${total.toFixed(2)}`; //mostramos el total
+const porciones = parseFloat(porcionesInput.value) || 0;
+    const costoPorPorcion = porciones > 0 ? total / porciones : 0;
 
+    totalPlato.innerHTML = `
+        Total: $${total.toFixed(2)}<br>
+        Costo por porción: $${costoPorPorcion.toFixed(2)}
+    `;
 }
 
 function eliminarIngrediente(index){
