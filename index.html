@@ -9,8 +9,12 @@
 <body class="font-sans max-w-[500px] mx-auto my-10 px-5 bg-[#faf7f2] text-[#333]">
 
 <section class="pt-10">
-    <h1 class="text-xl font-bold mb-1">Calculadora de Costos de una Receta</h1>
+    <h1 class="text-xl font-bold mb-1">Calculadora de Costos para Recetas</h1>
     <p class="text-gray-500 mt-0 mb-5">Agrega los ingredientes y sus costos para calcular el costo total de tu receta</p>
+    <div>
+        <label for="nombreReceta" class="text-sm text-gray-600">Nombre de la receta</label>
+        <input type="text" id="nombreReceta" placeholder="Ej. Cheesecake Frutos Rojos" required class="w-full p-2 mb-5 border border-gray-300 rounded text-base">
+    </div>
 </section>
 
 <form id="formIngrediente" class="bg-white p-4 rounded-lg shadow-md flex flex-col gap-2.5">
@@ -26,12 +30,17 @@
         <label for="cantidadReceta" class="text-sm text-gray-600">Cantidad usada (gramos)</label>
         <input type="number" id="cantidadReceta" placeholder="Ej: 150" min="0" required class="w-full p-2 border border-gray-300 rounded text-base">
     </div>
-    <button type="submit"class="bg-[#b5651d] hover:bg-[#944f16] text-white border-none py-2.5 rounded text-base cursor-pointer mt-1.5">Agregar ingrediente</button>
+    <button type="submit" id="btnAgregar" class="bg-[#b5651d] hover:bg-[#944f16] text-white border-none py-2.5 rounded text-base cursor-pointer mt-1.5">Agregar ingrediente</button>
 </form>
 
 <div class="bg-white p-4 rounded-lg shadow-md mt-4">
     <label for="porcionesReceta" class="text-sm text-gray-600">¿Cuántas porciones rinde la receta?</label>
     <input type="number" id="porcionesReceta" placeholder="Ej: 4" min="1" class="w-full p-2 border border-gray-300 rounded text-base">
+</div>
+
+<div class="bg-white p-4 rounded-lg shadow-md mt-4">
+    <label for="margenGanancia" class="text-sm text-gray-600">Margen de ganancia (%):</label>
+    <input type="number" id="margenGanancia" placeholder="Ej: 30" min="0" max="99" class="w-full p-2 border border-gray-300 rounded text-base">
 </div>
 
 <table class="w-full mt-6 border-collapse bg-white shadow-md"> 
@@ -47,6 +56,12 @@
 </table>
 
 <div class="total mt-4 text-xl font-bold text-right" id="totalPlato">Total: $0.00</div>
+<div id="totalPlato" class="mt-4"></div>
+
+<button id="btnCopiar" type="button"
+    class="w-full mt-3 bg-gray-700 hover:bg-gray-800 text-white text-sm py-2 px-4 rounded cursor-pointer">
+    Copiar receta
+</button>
 
 <script src="main.js"></script>
 
