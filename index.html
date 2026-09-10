@@ -6,64 +6,70 @@
     <title>Calculadora de Costos</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-sans max-w-[500px] mx-auto my-10 px-5 bg-[#faf7f2] text-[#333]">
+<body class="font-sans max-w-[500px] mx-auto my-10 px-5 bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100">
+
+<div class ="text-right">
+    <button class="bg-gray-300 hover:bg-gray-800 text-white py-1 px-2 rounded text-xs" id="btnModoOscuro" type="button">🌙</button>
+</div>
 
 <section class="pt-10">
     <h1 class="text-xl font-bold mb-1">Calculadora de Costos para Recetas</h1>
-    <p class="text-gray-500 mt-0 mb-5">Agrega los ingredientes y sus costos para calcular el costo total de tu receta</p>
+    <p class="text-gray-500 dark:text-gray-300 mt-0 mb-5">Agrega los ingredientes y sus costos para calcular el costo total de tu receta</p>
     <div>
-        <label for="nombreReceta" class="text-sm text-gray-600">Nombre de la receta</label>
-        <input type="text" id="nombreReceta" placeholder="Ej. Cheesecake Frutos Rojos" required class="w-full p-2 mb-5 border border-gray-300 rounded text-base">
+        <label for="nombreReceta" class="text-sm text-gray-600 dark:text-gray-300">Nombre de la receta</label>
+        <input type="text" id="nombreReceta" placeholder="Ej. Cheesecake Frutos Rojos" required class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded text-base bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
     </div>
 </section>
 
-<form id="formIngrediente" class="bg-white p-4 rounded-lg shadow-md flex flex-col gap-2.5">
+<form id="formIngrediente" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md flex flex-col gap-2.5 mt-4">
     <div>
-        <label for="nombre" class="text-sm text-gray-600">Nombre del Ingrediente:</label>
-        <input type="text" id="nombre" placeholder="Ej. Harina Integral" required class="w-full p-2 border border-gray-300 rounded text-base">
+        <label for="nombre" class="text-sm text-gray-600 dark:text-gray-300">Nombre del Ingrediente:</label>
+        <input type="text" id="nombre" placeholder="Ej. Harina Integral" required class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded text-base bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
     </div>
     <div>
-        <label for="costoPorKilo" class="text-sm text-gray-600">Costo por kilo ($)</label>
-        <input type="number" id="costoPorKilo" placeholder="Ej: 1000" min="0" step="0.01" required class="w-full p-2 border border-gray-300 rounded text-base">
+        <label for="costoPorKilo" class="text-sm text-gray-600 dark:text-gray-300">Costo por kilo ($)</label>
+        <input type="number" id="costoPorKilo" placeholder="Ej: 1000" min="0" step="0.01" required class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded text-base bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
     </div>
     <div>
-        <label for="cantidadReceta" class="text-sm text-gray-600">Cantidad usada (gramos)</label>
-        <input type="number" id="cantidadReceta" placeholder="Ej: 150" min="0" required class="w-full p-2 border border-gray-300 rounded text-base">
+        <label for="cantidadReceta" class="text-sm text-gray-600 dark:text-gray-300">Cantidad usada (gramos)</label>
+        <input type="number" id="cantidadReceta" placeholder="Ej: 150" min="0" required class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded text-base bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
     </div>
-    <button type="submit" id="btnAgregar" class="bg-[#b5651d] hover:bg-[#944f16] text-white border-none py-2.5 rounded text-base cursor-pointer mt-1.5">Agregar ingrediente</button>
+    <button type="submit" id="btnAgregar" class="bg-orange-500 hover:bg-orange-600 text-white border-none py-2.5 rounded text-base cursor-pointer mt-1.5">Agregar ingrediente</button>
 </form>
 
-<div class="bg-white p-4 rounded-lg shadow-md mt-4">
-    <label for="porcionesReceta" class="text-sm text-gray-600">¿Cuántas porciones rinde la receta?</label>
-    <input type="number" id="porcionesReceta" placeholder="Ej: 4" min="1" class="w-full p-2 border border-gray-300 rounded text-base">
+<div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md mt-4">
+    <label for="porcionesReceta" class="text-sm text-gray-600 dark:text-gray-300">¿Cuántas porciones rinde la receta?</label>
+    <input type="number" id="porcionesReceta" placeholder="Ej: 4" min="1" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded text-base bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
 </div>
 
-<div class="bg-white p-4 rounded-lg shadow-md mt-4">
-    <label for="margenGanancia" class="text-sm text-gray-600">Margen de ganancia (%):</label>
-    <input type="number" id="margenGanancia" placeholder="Ej: 30" min="0" max="99" class="w-full p-2 border border-gray-300 rounded text-base">
+<div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md mt-4">
+    <label for="margenGanancia" class="text-sm text-gray-600 dark:text-gray-300">Margen de ganancia (%):</label>
+    <input type="number" id="margenGanancia" placeholder="Ej: 30" min="0" max="99" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded text-base bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
 </div>
 
-<table class="w-full mt-6 border-collapse bg-white shadow-md"> 
-    <thead>
+<table class="w-full mt-6 border-collapse bg-white dark:bg-gray-800 shadow-md">
         <tr>
-            <th class="p-2 px-2 text-left border-b border-gray-200 text-sm bg-[#f0ece5]">Ingrediente</th>
-            <th class="p-2 px-2 text-left border-b border-gray-200 text-sm bg-[#f0ece5]">Gramos</th>
-            <th class="p-2 px-2 text-left border-b border-gray-200 text-sm bg-[#f0ece5]">Costo</th>
-            <th class="p-2 px-2 text-left border-b border-gray-200 text-sm bg-[#f0ece5]"></th>
+            <th class="p-2 px-2 text-left border-b border-gray-200 dark:border-gray-600 text-sm bg-[#f0ece5] dark:bg-gray-700 text-gray-800 dark:text-white">Ingrediente</th>
+            <th class="p-2 px-2 text-left border-b border-gray-200 dark:border-gray-60 text-sm bg-[#f0ece5] dark:bg-gray-700 text-gray-800 dark:text-white">Gramos</th>
+            <th class="p-2 px-2 text-left border-b border-gray-200 dark:border-gray-600 text-sm bg-[#f0ece5] dark:bg-gray-700 text-gray-800 dark:text-white">Costo</th>
+            <th class="p-2 px-2 text-left border-b border-gray-200 dark:border-gray-600 text-sm bg-[#f0ece5] dark:bg-gray-700 text-gray-800 dark:text-white"></th>
         </tr>
-    </thead>
     <tbody id="cuerpoTabla"></tbody>
 </table>
 
-<div class="total mt-4 text-xl font-bold text-right" id="totalPlato">Total: $0.00</div>
-<div id="totalPlato" class="mt-4"></div>
+<div class="total mt-4 text-xl font-bold text-left" id="totalPlato">Total: $0.00</div>
 
 <button id="btnCopiar" type="button"
-    class="w-full mt-3 bg-gray-700 hover:bg-gray-800 text-white text-sm py-2 px-4 rounded cursor-pointer">
+    class="w-full mt-3 bg-yellow-500 hover:bg-yellow-600 text-white text-sm py-2.5 px-4 rounded cursor-pointer">
     Copiar receta
 </button>
 
 <script src="main.js"></script>
+<script>
+    tailwind.config = {
+        darkMode: "class"
+    }
+</script>
 
 </body>
 </html>

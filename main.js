@@ -110,14 +110,14 @@ function renderizarTabla () {
     }
 
     totalPlato.innerHTML = `
-        <p class="text-base font-bold text-gray-800 mb-2">${nombreReceta.value || "Receta sin nombre"}</p>
-        <p class="text-sm font-medium text-gray-700">Costo Total: $${total.toFixed(2)}</p>
-        <p class="text-sm font-medium text-gray-700">Costo por porción: $${costoPorPorcion.toFixed(2)}</p>
-        <p class="text-sm font-medium text-gray-700 mt-3">Margen de ganancia: ${margen.toFixed(0)}%</p>
-        <p class="text-sm font-medium text-gray-700 mt-3">Precio Venta por porcion: $${precioVenta.toFixed(2)}</p>
-        <p class="text-sm font-medium text-gray-700">Precio Venta Total: $${precioVentaTotal.toFixed(2)}</p>
-        <p class="text-sm font-medium text-gray-700 mt-3">Ganancia por porción: $${ganancia.toFixed(2)}</p>
-        <p class="text-sm font-medium text-gray-700">Ganancia total: $${gananciaTotal.toFixed(2)}</p>
+        <p class="text-base font-bold text-gray-800 dark:text-gray-300 mb-2">${nombreReceta.value || "Receta sin nombre"}</p>
+        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Costo Total: $${total.toFixed(2)}</p>
+        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Costo por porción: $${costoPorPorcion.toFixed(2)}</p>
+        <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mt-3">Margen de ganancia: ${margen.toFixed(0)}%</p>
+        <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mt-3">Precio Venta por porcion: $${precioVenta.toFixed(2)}</p>
+        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Precio Venta Total: $${precioVentaTotal.toFixed(2)}</p>
+        <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mt-3">Ganancia por porción: $${ganancia.toFixed(2)}</p>
+        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Ganancia total: $${gananciaTotal.toFixed(2)}</p>
     `;
 }
 
@@ -136,11 +136,11 @@ function copiarRecetaAlPortapapeles() {
         return; // si no se cumple la funcion se corta aqui
     }
 
-const listaTexto = listaIngredientes.map(ing => `- ${ing.nombre}: ${ing.cantidadReceta}g ($${ing.calcularCosto().toFixed(2)})`) //creamos el listado de ingredientes como un string y con el join hacemos el break para que queden en columna.
-    .join("\n");
+    const listaTexto = listaIngredientes.map(ing => `- ${ing.nombre}: ${ing.cantidadReceta}g ($${ing.calcularCosto().toFixed(2)})`) //creamos el listado de ingredientes como un string y con el join hacemos el break para que queden en columna.
+        .join("\n");
 
 
-const texto = `${nombreReceta.value || "Receta sin nombre"}
+    const texto = `${nombreReceta.value || "Receta sin nombre"}
 
     Ingredientes
     ${listaTexto}
@@ -163,5 +163,20 @@ const texto = `${nombreReceta.value || "Receta sin nombre"}
         })
         .catch(() => {
             alert("No se pudo copiar. Probá de nuevo.");
-        });
+    });
 }
+
+
+const btnModoOscuro = document.getElementById("btnModoOscuro");
+
+btnModoOscuro.addEventListener("click", () => {
+
+    document.documentElement.classList.toggle("dark");
+
+    if (document.documentElement.classList.contains("dark")) {
+        btnModoOscuro.textContent = "☀️";
+    } else {
+        btnModoOscuro.textContent = "🌙";
+    }
+
+});
